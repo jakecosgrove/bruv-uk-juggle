@@ -1,0 +1,521 @@
+/* BRUV.UK Service Styles - Based on GOV.UK Design System */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #ffffff;
+}
+
+/* Header */
+.bruv-header {
+    background-color: #0b0c0c;
+    padding: 10px 0;
+    border-bottom: 10px solid #1d70b8;
+}
+
+.bruv-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+}
+
+.bruv-header__logo {
+    margin-right: 20px;
+}
+
+.bruv-header__logo-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.bruv-header__logo-link:hover {
+    text-decoration: underline;
+}
+
+.bruv-header__service-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+.bruv-header__service-name:hover {
+    text-decoration: underline;
+}
+
+.bruv-header__navigation {
+    margin-left: auto;
+}
+
+.bruv-header__navigation-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.bruv-header__navigation-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.bruv-header__navigation-item a:hover {
+    text-decoration: underline;
+}
+
+.bruv-header__navigation-item--active a {
+    border-bottom: 3px solid white;
+    padding-bottom: 3px;
+}
+
+/* Width Container */
+.bruv-width-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+/* Hero Section */
+.bruv-hero {
+    background-color: #1d70b8;
+    color: white;
+    padding: 80px 0;
+    margin-bottom: 60px;
+}
+
+.bruv-hero__heading {
+    color: white;
+    font-size: 56px;
+    line-height: 1.1;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    max-width: 800px;
+}
+
+.bruv-hero__description {
+    color: white;
+    font-size: 24px;
+    line-height: 1.4;
+    margin: 0 0 40px 0;
+    max-width: 700px;
+}
+
+/* Buttons */
+.bruv-button {
+    background-color: #00703c;
+    color: white;
+    padding: 15px 35px;
+    border: 2px solid transparent;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px 8px 20px 0;
+    border-radius: 0;
+    box-shadow: 0 2px 0 #002d18;
+}
+
+.bruv-button--large {
+    font-size: 24px;
+    padding: 18px 40px;
+}
+
+.bruv-button--start::after {
+    content: "\2192";
+    margin-left: 10px;
+    font-size: 28px;
+}
+
+.bruv-button:hover {
+    background-color: #005a30;
+}
+
+.bruv-button:active {
+    top: 2px;
+    box-shadow: none;
+}
+
+.bruv-button--secondary {
+    background-color: #f3f2f1;
+    color: #0b0c0c;
+    box-shadow: 0 2px 0 #929191;
+}
+
+.bruv-button--secondary:hover {
+    background-color: #dbdad9;
+}
+
+/* Typography */
+.bruv-heading-xl {
+    font-size: 48px;
+    line-height: 1.09375;
+    font-weight: bold;
+    margin: 0 0 30px 0;
+    color: #0b0c0c;
+}
+
+.bruv-heading-l {
+    font-size: 36px;
+    line-height: 1.11111;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    color: #0b0c0c;
+}
+
+.bruv-heading-m {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: bold;
+    margin: 30px 0 15px 0;
+    color: #0b0c0c;
+}
+
+.bruv-heading-s {
+    font-size: 19px;
+    line-height: 1.31579;
+    font-weight: bold;
+    margin: 20px 0 15px 0;
+    color: #0b0c0c;
+}
+
+.bruv-body-l {
+    font-size: 24px;
+    line-height: 1.25;
+    margin: 0 0 20px 0;
+    color: #0b0c0c;
+}
+
+.bruv-body {
+    font-size: 19px;
+    line-height: 1.47368;
+    margin: 0 0 20px 0;
+    color: #0b0c0c;
+}
+
+.bruv-body-s {
+    font-size: 16px;
+    line-height: 1.25;
+    margin: 0 0 15px 0;
+}
+
+/* Feature Grid */
+.bruv-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin: 60px 0;
+}
+
+.bruv-feature-card {
+    border-top: 5px solid #1d70b8;
+    padding: 30px 0;
+}
+
+.bruv-feature-card__heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+    color: #0b0c0c;
+}
+
+.bruv-feature-card__description {
+    font-size: 19px;
+    line-height: 1.47368;
+    margin: 0;
+    color: #0b0c0c;
+}
+
+/* Section */
+.bruv-section {
+    padding: 60px 0;
+}
+
+.bruv-section--grey {
+    background-color: #f3f2f1;
+}
+
+/* Lists */
+.bruv-list {
+    margin: 0 0 20px 0;
+    padding-left: 0;
+}
+
+.bruv-list--bullet {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.bruv-list--bullet li {
+    margin-bottom: 10px;
+}
+
+.bruv-list--number {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.bruv-list--number li {
+    margin-bottom: 10px;
+}
+
+/* Links */
+.bruv-link {
+    color: #1d70b8;
+    text-decoration: underline;
+}
+
+.bruv-link:hover {
+    color: #003078;
+}
+
+.bruv-link:visited {
+    color: #4c2c92;
+}
+
+/* Back Link */
+.bruv-back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: #0b0c0c;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.bruv-back-link:hover {
+    text-decoration: underline;
+}
+
+.bruv-back-link::before {
+    content: "←";
+    margin-right: 8px;
+}
+
+/* Inset Text */
+.bruv-inset-text {
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 10px solid #b1b4b6;
+    background-color: #f3f2f1;
+}
+
+/* Warning Text */
+.bruv-warning-text {
+    padding: 15px;
+    margin: 20px 0;
+    border-left: 5px solid #d4351c;
+    background-color: #fff;
+}
+
+.bruv-warning-text__icon {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Guide Navigation */
+.bruv-guide-nav {
+    background-color: #f3f2f1;
+    padding: 20px;
+    margin: 40px 0;
+}
+
+.bruv-guide-nav__heading {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 0 0 15px 0;
+}
+
+.bruv-guide-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bruv-guide-nav__item {
+    border-bottom: 1px solid #b1b4b6;
+    padding: 15px 0;
+}
+
+.bruv-guide-nav__item:last-child {
+    border-bottom: none;
+}
+
+.bruv-guide-nav__link {
+    color: #1d70b8;
+    text-decoration: underline;
+    font-size: 19px;
+}
+
+/* Footer */
+.bruv-footer {
+    background-color: #f3f2f1;
+    border-top: 1px solid #b1b4b6;
+    padding: 40px 0 20px 0;
+    margin-top: 80px;
+}
+
+.bruv-footer__meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.bruv-footer__links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.bruv-footer__link {
+    color: #1d70b8;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.bruv-footer__link:hover {
+    text-decoration: underline;
+}
+
+.bruv-footer__text {
+    margin: 0;
+    color: #505a5f;
+    font-size: 16px;
+}
+
+/* Grid System */
+.bruv-grid-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.bruv-grid-column-full {
+    padding: 0 15px;
+    width: 100%;
+}
+
+.bruv-grid-column-two-thirds {
+    padding: 0 15px;
+    width: 66.6666%;
+}
+
+.bruv-grid-column-one-third {
+    padding: 0 15px;
+    width: 33.3333%;
+}
+
+.bruv-grid-column-one-half {
+    padding: 0 15px;
+    width: 50%;
+}
+
+/* Main Wrapper */
+.bruv-main-wrapper {
+    padding: 40px 0;
+}
+
+/* Section Break */
+.bruv-section-break {
+    margin: 0;
+    border: 0;
+}
+
+.bruv-section-break--l {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.bruv-section-break--xl {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.bruv-section-break--visible {
+    border-bottom: 1px solid #b1b4b6;
+}
+
+/* Code */
+code {
+    background-color: #f3f2f1;
+    padding: 2px 6px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+/* Loading and Error States */
+.bruv-loading-box,
+.bruv-error-box {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.bruv-loading-box {
+    background-color: #f3f2f1;
+    border-left: 4px solid #1d70b8;
+}
+
+.bruv-error-box {
+    border: 4px solid #d4351c;
+    background-color: #fff;
+}
+
+.bruv-error-box h2 {
+    color: #d4351c;
+    margin-top: 0;
+    font-size: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bruv-header__container {
+        flex-wrap: wrap;
+    }
+    
+    .bruv-header__navigation {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 15px;
+    }
+    
+    .bruv-header__navigation-list {
+        gap: 15px;
+    }
+    
+    .bruv-hero__heading {
+        font-size: 36px;
+    }
+    
+    .bruv-hero__description {
+        font-size: 19px;
+    }
+    
+    .bruv-feature-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bruv-grid-column-two-thirds,
+    .bruv-grid-column-one-third,
+    .bruv-grid-column-one-half {
+        width: 100%;
+    }
+    
+    .bruv-footer__meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
