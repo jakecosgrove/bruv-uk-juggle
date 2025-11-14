@@ -12,8 +12,11 @@ const guideSlug = urlParams.get('guide');
  * Fetch guides from Contentful
  */
 async function fetchGuides() {
+    console.log('Fetching guides from Contentful...');
+    
     try {
         const url = `https://cdn.contentful.com/spaces/${SPACE_ID}/entries?content_type=guide&include=2`;
+        console.log('Fetch URL:', url);
 
         const response = await fetch(url, {
             headers: {
@@ -22,18 +25,27 @@ async function fetchGuides() {
             }
         });
 
+        console.log('Response status:', response.status);
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
+        console.log('Full response:', data);
+        console.log('Number of guides:', data.items?.length || 0);
+        console.log('Includes:', data.includes);
 
         if (data.items && data.items.length > 0) {
             if (guideSlug) {
                 // Show specific guide
                 const guide = data.items.find(g => g.fields.slug === guideSlug);
+                console.log('Looking for guide with slug:', guideSlug);
+                console.log('Found guide:', guide);
+                
                 if (guide) {
                     const sections = extractGuideSections(data, guide);
+                    console.log('Extracted sections:', sections);
                     renderGuide(guide, sections);
                 } else {
                     showError(`Guide "${guideSlug}" not found.`);
