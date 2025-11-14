@@ -35,6 +35,17 @@ async function fetchGuides() {
         console.log('Full response:', data);
         console.log('Number of guides:', data.items?.length || 0);
         console.log('Includes:', data.includes);
+        
+        // Log each guide's fields
+        if (data.items && data.items.length > 0) {
+            data.items.forEach((guide, index) => {
+                console.log(`Guide ${index} fields:`, guide.fields);
+                console.log(`Guide ${index} has guideSections field:`, !!guide.fields.guideSections);
+                if (guide.fields.guideSections) {
+                    console.log(`Guide ${index} guideSections:`, guide.fields.guideSections);
+                }
+            });
+        }
 
         if (data.items && data.items.length > 0) {
             if (guideSlug) {
