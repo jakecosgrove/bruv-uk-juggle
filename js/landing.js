@@ -91,8 +91,11 @@ function renderLandingPage(landingPage, features) {
         html += '<div class="bruv-feature-grid">';
         
         features.forEach(feature => {
+            const imageAlignment = feature.fields.imageAlignment || 'right';
+            const alignmentClass = imageAlignment === 'left' ? 'bruv-feature-card--image-left' : 'bruv-feature-card--image-right';
+            
             html += `
-                <div class="bruv-feature-card">
+                <div class="bruv-feature-card ${alignmentClass}">
                     <div class="bruv-feature-card__content">
                         <h3 class="bruv-feature-card__heading">${escapeHtml(feature.fields.title)}</h3>
                         <p class="bruv-feature-card__description">${escapeHtml(feature.fields.description)}</p>
