@@ -8,8 +8,12 @@ const contentDiv = document.getElementById('content');
  * Fetch landing page content from Contentful
  */
 async function fetchLandingPage() {
+    console.log('Fetching landing page from Contentful...');
+    console.log('Space ID:', SPACE_ID);
+    
     try {
         const url = `https://cdn.contentful.com/spaces/${SPACE_ID}/entries?content_type=landingPage&include=2`;
+        console.log('Fetch URL:', url);
 
         const response = await fetch(url, {
             headers: {
@@ -18,18 +22,24 @@ async function fetchLandingPage() {
             }
         });
 
+        console.log('Response status:', response.status);
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
+        console.log('Response data:', data);
+        console.log('Number of items:', data.items?.length || 0);
 
         if (data.items && data.items.length > 0) {
+            console.log('Landing page found:', data.items[0]);
             const landingPage = data.items[0];
             const features = extractFeatures(data, landingPage);
+            console.log('Features extracted:', features.length);
             renderLandingPage(landingPage, features);
         } else {
-            showError('No landing page found. Please create a Landing Page entry in Contentful.');
+            showError('No landing page found. Please create a Landing Page entry in Contentful with content type "landingPage".');
         }
     } catch (err) {
         console.error('Fetch error:', err);
@@ -83,8 +93,13 @@ function renderLandingPage(landingPage, features) {
         features.forEach(feature => {
             html += `
                 <div class="bruv-feature-card">
-                    <h3 class="bruv-feature-card__heading">${escapeHtml(feature.fields.title)}</h3>
-                    <p class="bruv-feature-card__description">${escapeHtml(feature.fields.description)}</p>
+                    <div class="bruv-feature-card__content">
+                        <h3 class="bruv-feature-card__heading">${escapeHtml(feature.fields.title)}</h3>
+                        <p class="bruv-feature-card__description">${escapeHtml(feature.fields.description)}</p>
+                    </div>
+                    <div class="bruv-feature-card__image">
+                        ${renderFeatureImage(feature)}
+                    </div>
                 </div>
             `;
         });
@@ -98,6 +113,28 @@ function renderLandingPage(landingPage, features) {
     `;
     
     contentDiv.innerHTML = html;
+}
+
+/**
+ * Render feature image or placeholder
+ */
+function renderFeatureImage(feature) {
+    if (feature.fields.image && feature.fields.image.fields) {
+        const imageUrl = feature.fields.image.fields.file.url;
+        const imageAlt = feature.fields.image.fields.title || feature.fields.title;
+        return `
+            <div class="bruv-feature-card__image-wrapper">
+                <img src="https:${imageUrl}" alt="${escapeHtml(imageAlt)}">
+            </div>
+        `;
+    }
+    
+    // Placeholder if no image
+    return `
+        <div class="bruv-feature-card__image-wrapper">
+            <span style="color: #505a5f; font-size: 16px;">Image placeholder</span>
+        </div>
+    `;
 }
 
 /**
