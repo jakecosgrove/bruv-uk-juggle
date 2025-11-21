@@ -60,7 +60,22 @@ function extractFeatures(data, landingPage) {
     return landingPage.fields.features
         .map(featureRef => {
             const featureId = featureRef.sys.id;
-            return data.includes.Entry.find(entry => entry.sys.id === featureId);
+            const feature = data.includes.Entry.find(entry => entry.sys.id === featureId);
+            
+            if (!feature || !feature.fields) {
+                return null;
+            }
+            
+            // Get the feature's image if it exists
+            if (feature.fields.image && data.includes?.Asset) {
+                const imageId = feature.fields.image.sys.id;
+                const imageAsset = data.includes.Asset.find(asset => asset.sys.id === imageId);
+                if (imageAsset) {
+                    feature.imageAsset = imageAsset;
+                }
+            }
+            
+            return feature;
         })
         .filter(feature => feature && feature.fields);
 }
@@ -210,6 +225,18 @@ function renderGuideImage(guide) {
  * Render feature image or placeholder
  */
 function renderFeatureImage(feature) {
+    // Check if we have the imageAsset we extracted
+    if (feature.imageAsset && feature.imageAsset.fields) {
+        const imageUrl = feature.imageAsset.fields.file.url;
+        const imageAlt = feature.imageAsset.fields.title || feature.fields.title;
+        return `
+            <div class="bruv-feature-card__image-wrapper">
+                <img src="https:${imageUrl}" alt="${escapeHtml(imageAlt)}">
+            </div>
+        `;
+    }
+    
+    // Fallback: check if image is directly in fields (shouldn't happen with include=2, but just in case)
     if (feature.fields.image && feature.fields.image.fields) {
         const imageUrl = feature.fields.image.fields.file.url;
         const imageAlt = feature.fields.image.fields.title || feature.fields.title;
