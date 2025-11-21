@@ -198,9 +198,9 @@ function renderGuideImage(guide) {
         return `<img src="https:${imageUrl}" alt="${escapeHtml(imageAlt)}">`;
     }
     
-    // Placeholder if no image
+    // Placeholder if no image - will stretch to full height of card
     return `
-        <div style="width: 100%; aspect-ratio: 4/3; background-color: #b1b4b6; display: flex; align-items: center; justify-content: center;">
+        <div style="width: 100%; height: 100%; background-color: #b1b4b6; display: flex; align-items: center; justify-content: center;">
             <span style="color: #505a5f; font-size: 16px;">Image placeholder</span>
         </div>
     `;
